@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "lint": "eslint index.js globals.js webview.js **/*.js */**/*.js --ignore-pattern 'node_modules/*' --fix --quiet",
-    "protobuf": "protocol-buffers hyperswarm/peersocket-schemas.proto -o hyperswarm/peersocket-schemas.js"
+    "protobuf": "protocol-buffers hyperswarm/peer-socket-schemas.proto -o hyperswarm/peer-socket-schemas.js"
   },
   "repository": {
     "type": "git",

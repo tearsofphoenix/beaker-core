@@ -10,7 +10,6 @@ const archivesDb = require('../../dbs/archives')
 const archiveDraftsDb = require('../../dbs/archive-drafts')
 const {cbPromise} = require('../../lib/functions')
 const {timer} = require('../../lib/time')
-const lock = require('../../lib/lock')
 
 // exported api
 // =
@@ -230,7 +229,7 @@ module.exports = {
     opts.shallow = false
     return folderSync.syncArchiveToFolder(archive, opts)
   },
-  
+
   // drafts
   // =
 

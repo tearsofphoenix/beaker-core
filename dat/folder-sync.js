@@ -40,7 +40,6 @@ const syncArchiveToFolder = exports.syncArchiveToFolder = function (archive, opt
   return sync(archive, false, opts)
 }
 
-
 // sync folder to the dat
 // - opts
 //   - shallow: bool, dont descend into changed folders (default true)
@@ -57,8 +56,7 @@ const syncFolderToArchive = exports.syncFolderToArchive = function (archive, opt
 const ensureSyncFinished = exports.ensureSyncFinished = async function (archive) {
   var isFinished
   var release = await getArchiveSyncLock(archive)
-  try { isFinished = (archive._activeSyncs == 0) }
-  finally { release() }
+  try { isFinished = (archive._activeSyncs == 0) } finally { release() }
   if (!isFinished) {
     return ensureSyncFinished(archive) // check again
   }
@@ -183,7 +181,7 @@ exports.configureFolderToArchiveWatcher = async function (archive) {
       // no need to setup watcher
       // just do an add-only sync from archive->folder
       await sync(archive, false, {shallow: false, addOnly: true})
-      if (shouldAbort()) return
+      if (shouldAbort()) return // eslint-disable-line no-useless-return
     } else {
       // sync up
       try {
